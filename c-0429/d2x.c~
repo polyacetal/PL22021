@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int main(void)
+{
+		int value;
+		printf("10進数 >");
+		scanf("%d\n",value);
+		printf("16進数 = %x", value);
+		return(0);
+}
