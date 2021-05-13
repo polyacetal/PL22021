@@ -17,7 +17,7 @@ int main(void)
 			max = scr;
 		} else if (scr < min && scr >= 0) {
 			min = scr;
-		} else {
+		} else if (scr > prf){
 			printf("このテストは%d点満点です\n", prf);
 		}
 	} while (scr > 0);
