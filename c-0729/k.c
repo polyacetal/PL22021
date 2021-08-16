@@ -25,11 +25,48 @@ int sum(char *file)
 
 void help()
 {
+	char cmd[BUFLEN];
+	char *fmt = BUFFMT;
 	printf("exit\n");
 	printf("help\n");
 	printf("reset\n");
 	printf("show\n");
 	printf("sum ファイル名\n");
+	printf("save ファイル名\n");
+	printf("helpはexitで抜けられます.このプログラムの停止もexitで行えます.\n");
+	printf("コマンドを入力すると詳しいhelpが見れます.\n");
+	while(1) {
+		printf("\nhelp > ");
+		if(scanf(fmt, cmd) == EOF) break;
+		if(strcmp(cmd, "exit") == 0) break;
+		else if (strcmp(cmd, "help") == 0) {
+			printf("helpです.\n");
+		}
+		else if (strcmp(cmd, "reset") == 0) {
+			printf("合計を0に戻します.\n");
+		}
+		else if (strcmp(cmd, "show") == 0) {
+			printf("これまで合計を表示させます.\n");
+		}
+		else if (strcmp(cmd, "sum") == 0) {
+			printf("sum ファイル名　でファイルの中の値の総和を出します.\n");
+		}
+		else if (strcmp(cmd, "save") == 0) {
+			printf("save ファイル名　でファイルに合計の値を出力します.\n");
+		}
+		else {printf("エラー:不明なコマンド:%s\n", cmd);}
+	}
+}
+
+void save(char *file, int total)
+{
+	FILE *fp = NULL;
+
+	fp = fopen(file, "w");
+	if (fp == NULL){
+		perror("オープン失敗");}
+	fprintf(fp, "%d\n", total);
+	fclose(fp);
 }
 
 int main(void)
@@ -56,6 +93,10 @@ int main(void)
 		}
 		else if (strcmp(cmd, "reset") == 0) {
 			total = 0;
+		}
+		else if (strcmp(cmd, "save") == 0) {
+			scanf(fmt, arg);
+			save(arg, total);
 		}
 		else if (strcmp(cmd, "help") == 0) {
 			help();
