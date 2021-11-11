@@ -1,0 +1,11 @@
+left 15
+repeat 5
+	on
+	left 6
+	down 3
+	right 6
+	up 3
+	off
+	up 2
+	right 3
+end

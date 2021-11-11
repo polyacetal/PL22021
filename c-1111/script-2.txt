@@ -1,0 +1,8 @@
+up 5
+left 10
+repeat 4
+	on
+	right 3
+	off
+	right 2
+end
