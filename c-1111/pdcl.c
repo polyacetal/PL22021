@@ -63,6 +63,7 @@ int proc(FILE *fp)
 		// ペン状態切替コマンド
 		if (strcmp(cmd, "off") == 0) key='-';
 		else if (strcmp(cmd, "on") == 0) key='+';
+		else if (strcmp(cmd, "eraser") == 0) key='x';
 
 		// ペン移動コマンド
 		else if (strcmp(cmd, "up") == 0) key='k';
@@ -70,6 +71,8 @@ int proc(FILE *fp)
 		else if (strcmp(cmd, "left") == 0) key='h';
 		else if (strcmp(cmd, "right") == 0) key='l';
 
+		//リセットコマンド
+		else if (strcmp(cmd, "reset") == 0) key='!';
 		// その他...シンタックスエラー
 		else continue;		// とりあえず無視しておく
 

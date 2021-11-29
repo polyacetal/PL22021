@@ -9,12 +9,13 @@ x, y：ペンの位置（参照渡し）
 w, h：画面サイズ
 key：入力キー
 */
-void Ctrl(int *pen, int *x, int *y, int w, int h, int key)
+void Ctrl(int *pen, int *eraser, int *x, int *y, int w, int h, int key)
 {
 	switch (key) {
 	case '-': *pen = 0; break;		// on
 	case '+': *pen = 1; break;		// off
 	case ' ': *pen = (*pen + 1)%2; break;	// on/off切替
+	case 'x': *eraser = (*eraser +1)%2; break;	//on/off切り替え
 
 	case 'h': (*x)--; if (*x < 0) *x = 0; break;		// ←
 	case 'j': (*y)++; if (*y >= h) *y = h - 1; break;	// ↓
@@ -44,6 +45,7 @@ fout:操作記録用ファイルポインタ
 void Game(FILE *fin,FILE *fout)
 {
 	int	pen;	// ペンの状態（0:off，1:on）が入るよ
+	int eraser;	//消しゴムモードの切り替え（0:off，1:on）が入るよ
 	int	x, y;	// ペンの位置が入るよ
 	int	w, h;	// 画面のサイズが入るよ
 	int	key;	// 入力キーの文字が入るよ
@@ -52,11 +54,16 @@ void Game(FILE *fin,FILE *fout)
 	erase();			// 画面をクリア
 	getmaxyx(stdscr, h, w);		// 画面サイズを取得
 	pen = 0; x = w/2; y = h/2;	// ペンの状態・位置を初期化
+	eraser = 0;	//消しゴムモードの初期化
 
 	while (1) {
 		// 描画
 //		erase();		// 画面を消去しなければ軌跡が残るよ
-		if (pen) mvaddch(y, x, '#');	// ペンのキャラクタを描画
+		if (eraser){
+			if (pen) mvaddch(y, x, ' ');	// 消しゴムモード
+		}else{
+			if (pen) mvaddch(y, x, '#');	// ペンのキャラクタを描画
+		}
 		refresh();		// 画面を表示
 
 		// 入力
@@ -64,12 +71,13 @@ void Game(FILE *fin,FILE *fout)
 			key = fgetc(fin);//ファイルからキーを入力
 			usleep(100000);	//100ms停止(再生速度の調整)
 		} else {
-		key = getch();		// 端末からキーを入力
+			key = getch();		// 端末からキーを入力
 		}
+		if (key == '!' ) erase();//!でリセット
 		if (key == EOF) break;//EOFで終了
 
 		// ペンの操作
-		Ctrl(&pen, &x, &y, w, h, key);
+		Ctrl(&pen, &eraser, &x, &y, w, h, key);
 
 		//操作の記録
 		if (fout != NULL) fputc(key,fout);

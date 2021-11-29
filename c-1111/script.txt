@@ -1,11 +1,65 @@
 left 15
-repeat 5
-	on
-	left 6
-	down 3
-	right 6
-	up 3
-	off
-	up 2
-	right 3
-end
+up 7
+
+on
+left 25
+off
+down
+right 2
+on
+right 23
+down
+left 21
+off
+down
+right
+on
+right 20
+
+down
+left 5
+right 5
+
+down
+left 5
+off
+left 15
+on
+off
+left
+down
+on
+right
+off
+right 15
+on
+right 5
+
+down
+left 5
+off
+left 15
+on
+left 3
+off
+left 2
+down
+on
+right 5
+off
+right 15
+on
+right 5
+
+down
+left 5
+off
+left 15
+on
+left 5
+down
+right 18
+off
+right 2
+on
+right 5
