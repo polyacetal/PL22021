@@ -63,7 +63,7 @@ int proc(FILE *fp)
 		// ペン状態切替コマンド
 		if (strcmp(cmd, "off") == 0) key='-';
 		else if (strcmp(cmd, "on") == 0) key='+';
-		else if (strcmp(cmd, "eraser") == 0) key='x';
+		else if (strcmp(cmd, "erase") == 0) key='x';
 
 		// ペン移動コマンド
 		else if (strcmp(cmd, "up") == 0) key='k';
