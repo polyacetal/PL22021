@@ -4,7 +4,6 @@
 
 #define BUFLEN	256	// バッファ文字列のサイズ
 #define ARGS	16	// コマンド引数の個数の最大値
-#define IfStr(s1, op, s2) if (strcmp(s1, s2) op 0)
 
 int proc(FILE *fp)
 {
@@ -41,7 +40,7 @@ int proc(FILE *fp)
 
 		// スクリプトの解釈
 		// 制御構造コマンド repeat-end
-		IfStr(cmd, ==, "repeat") {
+		if (strcmp(cmd, "repeat") == 0) {
 			if (argc < 2) {
 				n = 1;
 			} else {
@@ -58,22 +57,22 @@ int proc(FILE *fp)
 			//...n <= 0 だとバグるのは仕様です
 			continue;
 		} else
-		IfStr(cmd, ==, "end") return (0);
+		if (strcmp(cmd, "end") == 0) return (0);
 			//再帰終了(for内へ戻る)
 
 		// ペン状態切替コマンド
-		IfStr(cmd, ==, "off") key ='-';
-		else IfStr(cmd, ==, "on") key ='+';
-		else IfStr(cmd, ==, "erase") key ='x';
+		if (strcmp(cmd, "off") == 0) key='-';
+		else if (strcmp(cmd, "on") == 0) key='+';
+		else if (strcmp(cmd, "erase") == 0) key='x';
 
 		// ペン移動コマンド
-		else IfStr(cmd, ==, "up") key='k';
-		else IfStr(cmd, ==, "down") key='j';
-		else IfStr(cmd, ==, "left") key='h';
-		else IfStr(cmd, ==, "right") key='l';
+		else if (strcmp(cmd, "up") == 0) key='k';
+		else if (strcmp(cmd, "down") == 0) key='j';
+		else if (strcmp(cmd, "left") == 0) key='h';
+		else if (strcmp(cmd, "right") == 0) key='l';
 
 		//リセットコマンド
-		else IfStr(cmd, ==, "reset") key='!';
+		else if (strcmp(cmd, "reset") == 0) key='!';
 		// その他...シンタックスエラー
 		else continue;		// とりあえず無視しておく
 
