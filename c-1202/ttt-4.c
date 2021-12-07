@@ -31,46 +31,46 @@ void Title()
 /* ゲーム盤のプレーヤ番号を調べる関数
  * return：プレーヤ番号
  */
-int Get(Board bd, int y, int x)
+int Get(Board *bd, int y, int x)
 {
 	if (x < 0) return (-1);		/* ハミ出し禁止 */
-	if (x >= bd.size) return (-1);	/* （バッファオーバラン防止） */
+	if (x >= bd->size) return (-1);	/* （バッファオーバラン防止） */
 	if (y < 0) return (-1);
-	if (y >= bd.size) return (-1);
+	if (y >= bd->size) return (-1);
 
-	return (bd.cell[y*bd.size+x]);
+	return (bd->cell[y*bd->size+x]);
 }
 
 /* ゲーム盤にプレーヤ番号を書き込む関数 */
-void Set(Board bd, int y, int x, int v)
+void Set(Board *bd, int y, int x, int v)
 {
 	if (x < 0) return;		/* ハミ出し禁止 */
-	if (x >= bd.size) return;		/* （バッファ−バラン防止） */
+	if (x >= bd->size) return;		/* （バッファ−バラン防止） */
 	if (y < 0) return;
-	if (y >= bd.size) return;
+	if (y >= bd->size) return;
 
-	bd.cell[y*bd.size+x] = v;
+	bd->cell[y*bd->size+x] = v;
 }
 
 /* ゲーム盤を初期化する関数 */
-void Clear(Board bd)
+void Clear(Board *bd)
 {
 	int i;
 
-	for (i = 0; i < bd.size*bd.size; i++) {
-		bd.cell[i] = 0;
+	for (i = 0; i < bd->size * bd->size; i++) {
+		bd->cell[i] = 0;
 	}
 }
 
 /* ゲーム盤を表示する関数 */
-void Draw(Board bd)
+void Draw(Board *bd)
 {
 	int	y, x;
 
 	printf("\n");
-	for (y = 0; y < bd.size; y++) {
-		for (x = 0; x < bd.size; x++) {
-			printf("%2d", bd.cell[y*bd.size+x]);
+	for (y = 0; y < bd->size; y++) {
+		for (x = 0; x < bd->size; x++) {
+			printf("%2d", bd->cell[y*bd->size+x]);
 		}
 		printf("\n");
 	}
@@ -97,20 +97,20 @@ int main(void)
 	bd.cell =(int *)malloc(sizeof(int)*n*n);
 	if (bd.cell == NULL) return (1);
 
-	Clear(bd);
+	Clear(&bd);
 
 	player = 1;
 	while (1) {
-		Draw(bd);
+		Draw(&bd);
 
 		while (1) {
 			printf("%dP の番 > ", player);
 			if (scanf("%d %d", &y, &x) == EOF) goto END;
 
-			if (Get(bd, y, x) == 0) break;
+			if (Get(&bd, y, x) == 0) break;
 			printf("そこには置けません!!\nもう一度 ");
 		}
-		Set(bd, y, x, player);
+		Set(&bd, y, x, player);
 
 		player = player%2 + 1;		/* 1→ 2，2→ 1 */
 	}
