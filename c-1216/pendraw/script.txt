@@ -1,0 +1,304 @@
+left 15
+up 7
+
+on
+left 25
+off
+down
+right 2
+on
+right 23
+down
+left 21
+off
+down
+right
+on
+right 20
+
+down
+left 5
+right 5
+
+down
+left 5
+off
+left 15
+on
+off
+left
+down
+on
+right
+off
+right 15
+on
+right 5
+
+down
+left 5
+off
+left 15
+on
+left 3
+off
+left 2
+down
+on
+right 5
+off
+right 15
+on
+right 5
+
+down
+left 5
+off
+left 15
+on
+left 5
+down
+right 5
+off
+right 15
+on
+right 5
+
+down
+left 5
+off
+left 3
+on
+left 17
+down
+right 15
+off
+right 7
+on
+right 3
+
+down
+left
+off
+left 11
+on
+left 13
+down
+right 12
+off
+right 13
+on
+right
+up 14
+off
+down 16
+
+reset
+
+on
+repeat 4
+	right 45
+	down
+	left 45
+	down
+end
+
+erase
+
+off
+up
+right 2
+on
+right 9
+off
+right 3
+on
+right
+off
+right 3
+on
+right 11
+off
+right 3
+on
+right
+off
+right 9
+on
+right 3
+
+up
+left
+off
+left 3
+on
+left 5
+off
+left 3
+on
+left
+off
+left 3
+on
+left 11
+off
+left 3
+on
+left
+off
+left 3
+on
+left 9
+off
+left 2
+
+up
+on
+right
+off
+right 11
+on
+right 3
+off
+right 3
+on
+right 11
+off
+right 3
+on
+right
+off
+right 3
+on
+right 7
+
+up
+left 7
+off
+left 3
+on
+left
+off
+left 3
+on
+left 3
+off
+left 5
+on
+left 3
+off
+left 3
+on
+left 3
+off
+left 3
+on
+left 5
+off
+left 3
+on
+left
+
+up
+right 3
+off
+right 3
+on
+right
+off
+right 3
+on
+right 5
+off
+right 3
+on
+right
+off
+right 3
+on
+right 3
+off
+right 3
+on
+right
+off
+right 3
+on
+right
+off
+right 3
+on
+right 7
+
+up
+left 7
+off
+left 3
+on
+left
+off
+left 3
+on
+left
+off
+left 3
+on
+left 3
+off
+left 3
+on
+left
+off
+left 3
+on
+left 5
+off
+left 3
+on
+left
+off
+left 3
+on
+left 3
+
+up
+right 5
+off
+right 3
+on
+right 7
+off
+right 5
+on
+right 7
+off
+right 5
+on
+right
+off
+right 3
+on
+right 5
+off
+right 3
+on
+right
+
+up
+left 3
+off
+left 9
+on
+left
+off
+left 5
+on
+left 7
+off
+left 5
+on
+left 7
+off
+left 3
+on
+left 5
